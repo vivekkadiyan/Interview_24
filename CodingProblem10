@@ -1,0 +1,18 @@
+package com.test;
+
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class CodingProblem10 {
+public static void main(String[] args) {
+	String input = "lovevivek";
+	
+	String result = Arrays.stream(input.split("")).
+						collect(Collectors.groupingBy(a->a , LinkedHashMap::new , Collectors.counting())).entrySet().stream().
+							filter(a->a.getValue() > 1).map(Map.Entry::getKey).findFirst().get();
+				
+	System.out.println(result);
+}
+}
